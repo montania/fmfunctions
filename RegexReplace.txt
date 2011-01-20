@@ -1,0 +1,20 @@
+// RegexReplace ( text ; search pattern ; replacement ; options )
+// Requires SmartPill PHP plugin
+
+Case(PHP_Version  ≠ "?"
+;
+// preg_replace ( pattern , replacement , subject [, int $limit [, int &$count ]] )
+Let(expr="
+setlocale (LC_CTYPE, 'sv_SE.ISO8859-1');
+echo (preg_replace ('/" & Substitute(search Pattern;["/";"\/"];["'";"\'"]) & "/" 
+& Substitute(options ;"g";"") & "', '" 
+& Substitute(replacement; ["'";"\'"]) // escape single quotes
+& "', '" 
+& Substitute(text; ["'";"\'"]) & "'));"
+;
+//expr & "¶" & 
+PHP_Execute( expr;1)
+)
+
+// fallback for missing PHP plugin
+; text)

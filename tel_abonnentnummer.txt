@@ -1,0 +1,9 @@
+// tel_abonnentnummer(input)
+// Returns the local part of a Swedish phone number.
+// Requires tel_riktnummer
+
+Let([
+input=Filter(input;"0123456789");
+];
+Middle(input; Length(tel_riktnummer(input)) + 1; Length(input) ) 
+)

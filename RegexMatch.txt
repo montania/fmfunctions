@@ -1,0 +1,22 @@
+// RegexMatch ( text ; search pattern ; options )
+// Returns only the full pattern match, no separate results for captures
+// Requires SmartPill PHP plugin
+
+Case(PHP_Version  ≠ "?"
+;
+
+Let(expr="
+setlocale (LC_CTYPE, 'sv_SE.ISO8859-1');
+preg_match_all ( '/" 
+& Substitute(search Pattern;["/";"\/"];["'";"\'"]) & "/" 
+& Substitute(options;"g";"") & "', '" 
+& Substitute(text;["'";"\'"])  & "', $regex_matches, PREG_PATTERN_ORDER);
+
+echo(implode(chr(13),$regex_matches[0]));
+"
+;
+//expr & "¶" & 
+PHP_Execute( expr;1)
+)
+; // no fallback for RegexMatch
+)

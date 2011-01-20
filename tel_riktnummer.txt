@@ -1,0 +1,13 @@
+// tel_riktnummer(input)
+// Returns the area code part of a Swedish phone number
+
+Let([
+input=Filter(input;"0123456789");
+tresiffriga="¶011¶013¶016¶018¶019¶021¶023¶026¶031¶033¶035¶036¶040¶042¶044¶046¶054¶060¶063¶090¶010¶020¶"
+];
+Case(PatternCount(tresiffriga ; "¶" & Left(input;3) & "¶") ; Left(input;3)
+; Left(input;2)="07" ; Left(input;3)
+; Left(input;2)="08" ; Left(input;2)
+; Left(input;4))
+
+)
